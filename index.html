@@ -1,0 +1,41 @@
+<head>
+    <script type="module">
+        import {egghunt} from "./egghunt.js";
+        import {bunnyVertices, bunnyNormals} from "./Bunny250t750n.js";
+        import {sphereVertices, sphereNormals} from "./Sphere180t540n.js";
+        
+        
+        let game;
+        function init() {
+            const canvas = document.getElementById('egg');
+            game = new egghunt(canvas, keyMap, bunnyVertices, bunnyNormals, sphereVertices, sphereNormals);
+            
+            setInterval(update, 0);
+        }
+        
+        function update() {
+            game.mainLoop();
+        }
+        
+        window.onload = init;
+        
+        const keyMap = {};
+        
+        function handleKeyPress(e) {
+            keyMap[e.key] = true;
+        }
+        
+        function handleKeyUp(e) {
+            keyMap[e.key] = false;
+        }
+        
+        window.onkeydown = handleKeyPress;
+        window.onkeyup = handleKeyUp;
+    </script>
+</head>
+
+<body>
+    <p id="fps"></p>
+    <p id="Enhancements"></p>
+    <canvas style="border: 1px solid black" id="egg" />
+</body>
